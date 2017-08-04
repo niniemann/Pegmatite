@@ -217,6 +217,7 @@ public:
 	 * in the members vector.
 	 */
 	ASTContainer();
+	virtual ~ASTContainer() override;
 
 	/**
 	 * Asks all members to construct themselves from the stack. The members are

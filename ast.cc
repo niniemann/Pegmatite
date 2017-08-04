@@ -82,6 +82,10 @@ ASTContainer::ASTContainer()
 	current = this;
 }
 
+ASTContainer::~ASTContainer()
+{
+}
+
 
 /** Asks all members to construct themselves from the stack.
 	The members are asked to construct themselves in reverse order.
