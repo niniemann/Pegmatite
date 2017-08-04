@@ -86,7 +86,7 @@ class Input
 		/**
 		 * Default constructor, constructs an invalid iterator into no buffer.
 		 */
-		inline iterator() : buffer(0), idx(npos) {}
+		inline iterator() : buffer(nullptr), idx(npos) {}
 		/**
 		 * Filename given by Input this iterator is derived from.
 		 * Typically a real filename, but not guaranteed (e.g., could
@@ -216,7 +216,10 @@ class Input
 	 * @param name    user-meaningful input name (typically a filename)
 	 */
 	Input(const std::string& name)
-		: user_name(name), buffer(0), buffer_start(1), buffer_end(0) {}
+		: user_name(name), buffer(nullptr),
+		  buffer_start(1), buffer_end(0)
+	{
+	}
 	private:
 	/**
 	 * A user-meaningful name.

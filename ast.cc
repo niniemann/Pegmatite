@@ -39,7 +39,7 @@ namespace {
  */
 // FIXME: Should be thread_local, but that doesn't seem to work on OS X for
 // some reason (__thread does)
-__thread pegmatite::ASTContainer *current = 0;
+__thread pegmatite::ASTContainer *current = nullptr;
 /**
  * The current parser delegate.  When constructing an object, this is set and
  * then the constructors for the fields run, accessing it to detect their
@@ -127,7 +127,7 @@ void ASTParserDelegate::bind_parse_proc(const Rule &r, parse_proc p)
 parse_proc ASTParserDelegate::get_parse_proc(const Rule &r) const
 {
 	auto it = handlers.find(std::addressof(r));
-	if (it == handlers.end()) return 0;
+	if (it == handlers.end()) return nullptr;
 	return it->second;
 }
 
@@ -144,7 +144,7 @@ std::unique_ptr<ASTNode> parse(Input &input, const Rule &g, const Rule &ws,
                                ErrorReporter &err, const ParserDelegate &d)
 {
 	ASTStack st;
-	if (!parse(input, g, ws, err, d, &st)) return 0;
+	if (!parse(input, g, ws, err, d, &st)) return nullptr;
 	if (st.size() > 1)
 	{
 		int i = 0;
