@@ -257,7 +257,7 @@ public:
 	 * the container, to be notified during the construction phase.
 	 */
 	ASTMember();
-	virtual ~ASTMember();
+	virtual ~ASTMember() override;
 protected:
 	/**
 	 * The container that owns this object.
@@ -453,7 +453,7 @@ public:
 
 		return true;
 	}
-	virtual ~ASTList() {}
+	virtual ~ASTList() override {}
 
 };
 
