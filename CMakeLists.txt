@@ -48,6 +48,11 @@ if(BUILD_DOCUMENTATION)
 	                   SOURCES ${PROJECT_BINARY_DIR}/Doxyfile)
 endif()
 
+option(BUILD_TRACING "Build with debug parse tracing support" OFF)
+if (BUILD_TRACING)
+	add_definitions("-D DEBUG_PARSING")
+endif()
+
 include_directories(.)
 option(BUILD_EXAMPLES "Build examples" OFF)
 if(BUILD_EXAMPLES)
