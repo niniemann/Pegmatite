@@ -15,6 +15,10 @@ set_target_properties(pegmatite-static PROPERTIES
 	POSITION_INDEPENDENT_CODE true
 	OUTPUT_NAME "pegmatite")
 
+if (CMAKE_BUILD_TYPE MATCHES "Debug")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+endif()
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -42,6 +46,11 @@ if(BUILD_DOCUMENTATION)
 	add_custom_target (Docs ALL 
 	                   COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/Doxyfile
 	                   SOURCES ${PROJECT_BINARY_DIR}/Doxyfile)
+endif()
+
+option(BUILD_TRACING "Build with debug parse tracing support" OFF)
+if (BUILD_TRACING)
+	add_definitions("-D DEBUG_PARSING")
 endif()
 
 include_directories(.)
