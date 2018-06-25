@@ -242,7 +242,7 @@ void runCalculator(const char *ops)
 		StringInput i(move(s));
 
 		// Parse the input
-		unique_ptr<AST::Expression<Value>> root = 0;
+		unique_ptr<AST::Expression<Value>> root = nullptr;
 		p.parse(i, p.g.expr, p.g.ws, defaultErrorReporter, root);
 
 		//on success
