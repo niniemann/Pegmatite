@@ -58,3 +58,14 @@ option(BUILD_EXAMPLES "Build examples" OFF)
 if(BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif()
+
+
+configure_file("pegmatite.pc.in" "pegmatite.pc" @ONLY)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pegmatite.pc"
+    DESTINATION lib/pkgconfig)
+
+install(TARGETS pegmatite pegmatite-static
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib)
+install(FILES ast.hh parser.hh pegmatite.hh
+    DESTINATION include/pegmatite)

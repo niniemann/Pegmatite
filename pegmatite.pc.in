@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: pegmatite
+Description: A library for reusable parsers
+Version: 0.1.0
+Libs: -L${libdir} -lpegmatite
+Cflags: -I${includedir}
+
